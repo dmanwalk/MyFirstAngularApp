@@ -1,0 +1,12 @@
+<h1>Breweries</h1>
+
+<!-- will only show this element if brews is a variable that exists in list component-->
+<ul *ngIf="brews">
+    
+    <!-- iterate through each element of brews in list compenent -->
+    <li *ngFor="let brew of brews">
+        <p class="name">{{brew.name}}</p>
+        <p class="country">{{brew.country}}</p>
+        <a href="{{brew.website_url }}" class="site">site</a>
+    </li>
+</ul>

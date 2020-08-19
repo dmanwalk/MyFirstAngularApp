@@ -1,0 +1,41 @@
+<h1>Welcome!</h1>
+<div class="play-container">
+    <!-- countClick() activates a function within the home.component ts file-->
+    <p> You've clicked <span (click)="countClick()">this</span> {{clickCounter}} times.</p>
+</div>
+<div class="play-container">
+    <p>
+        <input type="text" [(ngModel)] = "name"> <!-- Send input text to name property within the home component-->
+
+        <br>
+        <strong>You said: </strong>{{name}} <!--String interpolation from home component name property-->
+    </p>
+</div>
+<!-- style binding to div... if clickCounter is greater than 4 make background yellow :else make the background light grey-->
+
+<!-- 
+<div class="play-container" [style.background-color]="clickCounter > 4 ? 'yellow' : 'lightgray'"> 
+-->
+
+<!-- style Binding multiple styles to a div using ngStyle-->
+
+<!--<div class="play-container" [ngStyle]="{
+ 'background-color': clickCounter > 4 ? 'yellow' : 'lightgray',
+ 'border':          clickCounter > 4 ? '4px solid black' : 'none'   
+}">-->
+
+
+<!-- class binding when clickCounter property in home.component.ts is > 4, sets div class to active-->
+<!--<div class="play-container" [class.active]="clickCounter > 4">-->
+
+<div class="play-container" [ngClass]="setClasses()">
+
+    <!-- nge templates are only shown when condition is met if clickcount is greater than four show-->
+    <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none">
+        <p> The click counter is greater than four</p>
+    </ng-template>
+
+    <ng-template #none> 
+        <p>WACK</p>
+    </ng-template>
+</div>
